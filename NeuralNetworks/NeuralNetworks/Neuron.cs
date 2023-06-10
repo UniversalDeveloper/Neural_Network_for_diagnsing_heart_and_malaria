@@ -4,7 +4,7 @@ using System.Text;
 
 namespace NeuralNetworks
 {
-    class Neuron
+   public class Neuron
      {
         public List<double> Weights { get; }
         public NeuronType NeuronType { get; }
@@ -33,6 +33,11 @@ namespace NeuralNetworks
         { var result = 1.0 / (1.0 + Math.Pow(Math.E, -x));
             return result;       
         
+        }
+        public override string ToString()
+        {
+            return Output.ToString();
+
         }
     }
 }
