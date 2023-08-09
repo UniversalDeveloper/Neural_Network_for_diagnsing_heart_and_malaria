@@ -19,6 +19,14 @@ namespace NeuralNetworks
 
             }        
         }
+        public void SetWeights(params double[] weights)
+        { //TODO: delete after creating algorithmth of stadying
+            for (int i = 0; i < weights.Length; i++)
+            {
+                Weights[i] = weights[i];
+            }
+        
+        }
         public double FeedForward(List<double>inputsSignals) /// we need to create cheak of matching input signals and weights
         {
             var sum = 0.0;
