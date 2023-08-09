@@ -31,12 +31,29 @@ namespace NeuralNetworks
 
 
         }
-        public double FeedForward(List<double> inputSignals)
+        public Neuron FeedForward(List<double> inputSignals)
         {
             SendSignalsToInputNeurons(inputSignals);
+            FeedForwardsAllLayersAfterInput();
+            if (Topology.OutputCount==1)
+            {
+                return Layers.Last().Neurons[0];
+            }
+            else
+            {
+                return Layers.Last().Neurons.OrderByDescending(n => n.Output).First();
+            }
+
+        }
+        private void FeedForwardsAllLayersAfterInput() {
             for (int i = 1; i < Layers.Count; i++)
             {
-
+                var layer = Layers[i];
+                var priviousLayerCountSignals = Layers[i - 1].GetOutputSignals();
+                foreach (var neuron in layer.Neurons)
+                {
+                    neuron.FeedForward(priviousLayerCountSignals);
+                }
             }
         }
         private void CreateHiddenLayers()
