@@ -12,5 +12,17 @@ namespace NeuralNetworks
             // TODO: cheack input data correct
             Neurons = neurons;
 
+        public List<double> GetOutputSignals() 
+        {
+            var result = new List<double>();
+            foreach (var neuron in Neurons)
+            {
+                result.Add(neuron.Output);
+            }
+
+            return result;
+        
+        }
+
     }
 }

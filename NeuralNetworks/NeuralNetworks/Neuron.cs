@@ -9,7 +9,7 @@ namespace NeuralNetworks
         public List<double> Weights { get; }
         public NeuronType NeuronType { get; }
         public double Output { get; private set; }
-        public Neuron(int inputCount,NeuronType type)
+        public Neuron(int inputCount,NeuronType type= NeuronType.Normal)
         {
             NeuronType = type;
             Weights = new List<double>();
